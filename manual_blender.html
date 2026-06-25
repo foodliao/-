@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 900px 1786px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #14152a; }
+  body { width: 900px; margin: 0 auto; background: #14152a;
+         font-family: "Microsoft YaHei","微软雅黑",sans-serif; color: #c8c8e0;
+         padding: 24px 36px 30px; -webkit-font-smoothing: antialiased; }
+
+  .head { padding-bottom: 14px; border-bottom: 1px solid #2a2c48; }
+  .head h1 { font-size: 27px; color: #ec9840; font-weight: 800; display: inline-block; }
+  .head .v { display: inline-block; background: #6a4ab0; color: #e6dcff; font-size: 12px; font-weight: 700;
+             padding: 2px 9px; border-radius: 5px; margin-left: 12px; vertical-align: 5px; }
+  .head .en { font-size: 12.5px; color: #8a8aa6; margin-top: 5px; }
+
+  .sec { display: flex; align-items: center; font-size: 17px; font-weight: 800; color: #eceaf6; margin: 22px 0 12px; }
+  .sec i { width: 5px; height: 19px; border-radius: 3px; background: #6a7ad0; margin-right: 10px; }
+
+  .flex { display: flex; gap: 22px; align-items: flex-start; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { color: #8a90b0; font-weight: 600; text-align: left; padding: 7px 6px; border-bottom: 1px solid #2a2c48; }
+  td { padding: 9px 6px; border-bottom: 1px solid #23253f; color: #b6bcd6; }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 5px; margin-right: 5px; }
+  .t-g { background: #1f4a2e; color: #8fdca8; } .t-o { background: #4a3a1c; color: #f0c078; }
+  .t-b { background: #25356a; color: #a8b8f0; } .t-r { background: #4a2230; color: #f0a0ac; }
+  .ex { color: #7a80a0; font-style: italic; }
+
+  .gcard { width: 290px; flex: none; background: #1c1d38; border: 1px solid #2e3050; border-radius: 10px; padding: 13px 15px; }
+  .gcard h4 { font-size: 13px; color: #c8ccf0; font-weight: 700; margin-bottom: 9px; }
+  .gcard .gr { display: flex; align-items: center; font-size: 12px; color: #b6bcd6; margin: 6px 0; }
+  .gcard .gr .d { width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+  .gcard .gr .f { color: #7a80a0; font-style: italic; } .gcard .gr .vw { margin-left: auto; color: #9aa0c0; }
+  .gcard .note { font-size: 11.5px; color: #8a90b0; margin-top: 9px; line-height: 1.5; border-top: 1px solid #2a2c48; padding-top: 8px; }
+
+  .flow { display: flex; align-items: stretch; gap: 6px; }
+  .flow .stp { flex: 1; text-align: center; }
+  .flow .stp .num { width: 30px; height: 30px; border-radius: 50%; background: #4a4ab8; color: #fff;
+                    font-size: 14px; font-weight: 700; line-height: 30px; margin: 0 auto 8px; }
+  .flow .stp b { font-size: 12.5px; color: #e6e6f4; } .flow .stp p { font-size: 11px; color: #8a90b0; line-height: 1.5; margin-top: 4px; }
+  .flow .arr { align-self: center; color: #4a4d70; font-weight: 900; }
+
+  .mock { width: 290px; flex: none; background: #1c1d38; border: 1px solid #2e3050; border-radius: 10px; padding: 12px; }
+  .mock .mt { color: #e6e6f4; font-size: 12.5px; font-weight: 700; padding-bottom: 9px; }
+  .mock .mt .rd { color: #e05566; } .mock .seg { display: flex; gap: 5px; margin: 6px 0; }
+  .mock .seg span { flex: 1; text-align: center; font-size: 11px; padding: 4px; border-radius: 5px; background: #15162c; border: 1px solid #34375a; color: #aab0d0; }
+  .mock .seg span.on { background: #3a3a86; color: #fff; }
+  .mock .fld { background: #15162c; border: 1px solid #34375a; border-radius: 4px; font-size: 11px; color: #aab0d0; padding: 5px 7px; margin: 6px 0; }
+  .mock .fld b { color: #d6dcf4; }
+
+  .nlist .ni { display: flex; align-items: flex-start; margin: 11px 0; }
+  .nlist .ni .num { flex: none; width: 21px; height: 21px; border-radius: 50%; background: #4a4ab8; color: #fff;
+                    font-size: 12px; font-weight: 700; text-align: center; line-height: 21px; margin-right: 10px; }
+  .nlist .ni .t b { color: #e6e6f4; font-size: 13px; } .nlist .ni .t span { color: #9298ba; font-size: 12px; }
+  .nw { display:inline-block; background:#1f4a2e; color:#8fdca8; font-size:10.5px; padding:0 5px; border-radius:3px; margin-right:5px; }
+
+  .cards4 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .nc { background: #1c1d38; border: 1px solid #2e3050; border-radius: 10px; padding: 12px 15px; }
+  .nc h4 { font-size: 13.5px; color: #ec9840; font-weight: 700; margin-bottom: 6px; }
+  .nc p { font-size: 12px; color: #9aa0c0; line-height: 1.6; }
+  .nc p b { color: #c8ccf0; }
+
+  .upd { display: flex; gap: 14px; align-items: stretch; }
+  .upd .ub { flex: 1; background: #1c1d38; border: 1px solid #2e3050; border-radius: 10px; padding: 13px 16px; }
+  .upd .ub h4 { font-size: 13px; color: #8fdca8; font-weight: 700; margin-bottom: 7px; }
+  .upd .ub p { font-size: 12px; color: #9aa0c0; line-height: 1.65; }
+  .upd .ub p b { color: #c8ccf0; }
+  .banner { background: #243a26; border: 1px solid #3a6a40; border-radius: 7px; color: #a8e0b0;
+            font-size: 11.5px; padding: 7px 11px; margin-bottom: 9px; font-weight: 600; }
+
+  .tip { font-size: 11.5px; color: #8a90b0; margin-top: 8px; line-height: 1.55; }
+
+  .foot { display: flex; justify-content: space-between; color: #6a6a90; font-size: 11.5px;
+          margin-top: 22px; padding-top: 10px; border-top: 1px solid #2a2c48; }
+</style>
+</head>
+<body>
+
+  <div class="head">
+    <h1>LiClick 批量图生3D</h1><span class="v">v2.0</span>
+    <div class="en">Blender 插件 · 使用说明书 · 一次多选图片 → AI 批量生成 → 自动导入</div>
+  </div>
+
+  <div class="sec"><i></i>使用流程</div>
+  <div class="flow">
+    <div class="stp"><div class="num">1</div><b>打开面板</b><p>3D 视图右侧拉开侧栏，切到「LiClick」标签页</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">2</div><b>选择文件</b><p>点「选择文件」一次多选所有要生成的图，自动分组</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">3</div><b>勾选要生成的组</b><p>列表每组前带勾选框，勾你要的；可「全选/全不选」</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">4</div><b>选模型 + 配置</b><p>选 AI 模型，下方参数随模型自动变，填对应项</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">5</div><b>生成所选</b><p>只生成勾选的组，列表实时显示每组进度</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">6</div><b>自动导入</b><p>.glb 自带贴图导入，统一大小、沿 X 轴排队</p></div>
+  </div>
+
+  <div class="sec"><i></i>界面说明</div>
+  <div class="flex" style="margin-top:2px">
+    <div class="mock">
+      <div class="mt"><span class="rd">●</span> LiClick 批量图生3D</div>
+      <div class="fld">&lt; 已选 6 张图片 &gt;　<b>选择文件</b></div>
+      <div class="fld">选择 ai 模型：rodin-gen-2.5 ▾</div>
+      <div class="fld" style="color:#7a80a0">↳ 随模型显示：创意描述 / 生成质量 / 模型面数 / 材质配置…</div>
+      <div class="seg"><span>全选</span><span>全不选</span></div>
+      <div class="fld">☑ 灯　☐ 砖　☑ 红箱子　☑ 铁</div>
+      <div class="seg"><span class="on">生成所选</span></div>
+      <div class="fld" style="color:#7a80a0">[完成 ✓] 灯：已导入　[生成中] 铁…</div>
+      <div class="fld" style="color:#7a80a0">检查更新　　　　　　　 v2.0.0</div>
+    </div>
+    <div class="nlist">
+      <div class="ni"><span class="num">1</span><div class="t"><b>选择文件　</b><span><span class="nw">新</span>一个按钮搞定：点「选择文件」一次多选所有图片（同名前缀的多视角图会自动归为同一个物体），选完自动列出各物体组。</span></div></div>
+      <div class="ni"><span class="num">2</span><div class="t"><b>选择 AI 模型 · 界面随模型变　</b><span><span class="nw">新</span>选不同模型，下方配置项会自动切换成该模型支持的参数（详见下表），与 LiClick 官方一致、互不干扰。</span></div></div>
+      <div class="ni"><span class="num">3</span><div class="t"><b>勾选要生成的组　</b><span><span class="nw">新</span>扫描后列表里每组前带勾选框，点框勾选你要生成的；也可用「<b style="color:#c8ccf0">全选 / 全不选</b>」一键操作。</span></div></div>
+      <div class="ni"><span class="num">4</span><div class="t"><b>生成所选 · 锁定保护　</b><span>只生成勾选的组。点击后<span class="nw">新</span>配置区自动灰显锁定、保护当前任务，避免生成途中误改参数。</span></div></div>
+      <div class="ni"><span class="num">5</span><div class="t"><b>实时进度 + 自动重试　</b><span>每组实时显示：等待 / 上传 / 生成中 / 下载 / 导入 / 已完成 / 失败。<span class="nw">新</span>网络抖动会自动重试，不会因一次抖动就判失败。</span></div></div>
+      <div class="ni"><span class="num">6</span><div class="t"><b>检查更新 · 版本号　</b><span><span class="nw">新</span>面板底部显示当前版本号，并有「检查更新」按钮。作者发布新版后会自动更新（见下文）。</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec"><i></i>各 AI 模型可调参数（界面随选择实时切换）</div>
+  <table>
+    <tr><th width="170">模型</th><th>可调参数</th><th width="240">说明</th></tr>
+    <tr><td><span class="tag t-g">混元 Hunyuan-v3.1</span></td><td>模型面数 · 生成纹理 · PBR</td><td>有机体细节丰富，速度中等</td></tr>
+    <tr><td><span class="tag t-o">Rodin-Gen-2.5</span></td><td>创意描述(必填) · 生成质量(高/极高) · 模型面数 · 材质配置(PBR/Shaded/无)</td><td>表面细节强；<b style="color:#f0c078">一次只生成一组</b>，勾多个会让你挑一组</td></tr>
+    <tr><td><span class="tag t-b">Tripo-v3.1</span></td><td>模型面数 · 拓扑(三角面) · 生成纹理 · PBR</td><td>高精度通用，速度较快</td></tr>
+    <tr><td><span class="tag t-b">Tripo-P1</span></td><td>模型面数 · 拓扑 · 生成纹理 · PBR</td><td>智能低模，面数少、细节好</td></tr>
+  </table>
+  <div class="tip">模型列表每次打开会自动从 LiClick 在线拉取最新，新上线的大模型会自动出现在下拉里。</div>
+
+  <div class="sec"><i></i>命名规则（多视角合并）</div>
+  <div class="flex">
+    <table>
+      <tr><th>文件命名规则</th><th>对应视角</th><th>示例文件名</th><th>分组逻辑</th></tr>
+      <tr><td><span class="tag t-g">前缀_前</span><span class="tag t-g">前缀_1</span></td><td>正面 (front)</td><td class="ex">龙_前.png / 龙_1.png</td><td><span class="tag t-g">正面</span>纳入同组</td></tr>
+      <tr><td><span class="tag t-o">前缀_后</span><span class="tag t-o">前缀_2</span></td><td>背面 (back)</td><td class="ex">龙_后.png / 龙_2.png</td><td><span class="tag t-o">背面</span>纳入同组</td></tr>
+      <tr><td><span class="tag t-b">前缀_左</span><span class="tag t-b">前缀_3</span></td><td>左面 (left)</td><td class="ex">龙_左.png / 龙_3.png</td><td><span class="tag t-b">左面</span>纳入同组</td></tr>
+      <tr><td><span class="tag t-r">前缀_右</span><span class="tag t-r">前缀_4</span></td><td>右面 (right)</td><td class="ex">龙_右.png / 龙_4.png</td><td><span class="tag t-r">右面</span>纳入同组</td></tr>
+      <tr><td>其他随意命名</td><td>默认正面，独立对象</td><td class="ex">sword.png / chest.png</td><td>各自独立成组</td></tr>
+    </table>
+    <div class="gcard">
+      <h4>分组示例</h4>
+      <div class="gr"><span class="d" style="background:#5a9a6a"></span><span class="f">龙_前.png</span><span class="vw">正面</span></div>
+      <div class="gr"><span class="d" style="background:#e0973c"></span><span class="f">龙_后.png</span><span class="vw">背面</span></div>
+      <div class="gr"><span class="d" style="background:#5a7ad0"></span><span class="f">龙_左.png</span><span class="vw">左面</span></div>
+      <div class="gr"><span class="d" style="background:#e05566"></span><span class="f">龙_右.png</span><span class="vw">右面</span></div>
+      <div class="note">同名前缀的多视角图片会合并为同一个 3D 物体；无后缀图片各自独立生成一个 3D 物体。</div>
+    </div>
+  </div>
+
+  <div class="sec"><i></i>自动更新（无需反复重装）</div>
+  <div class="upd">
+    <div class="ub">
+      <div class="banner">▲ 发现新版本 v2.1.0，正在更新…　/　已更新到 v2.1.0，重启 Blender 即可生效</div>
+      <h4>自动检查</h4>
+      <p>每次打开 Blender 加载插件时，<b>后台静默检查</b>有没有新版（不打扰操作）。检测到新版会自动下载并提示，<b>重启 Blender</b> 后新功能即生效。</p>
+    </div>
+    <div class="ub">
+      <h4>手动检查</h4>
+      <p>面板底部带<b>当前版本号</b>与「<b>检查更新</b>」按钮，想随时确认有没有新版，点一下即可。已是最新会提示「已是最新版」。</p>
+      <p style="margin-top:7px;color:#7a80a0">作者更新 LiClick 的生成能力后，你<b>无需重新下载安装包</b>——插件自己就会拉到最新版。</p>
+    </div>
+  </div>
+
+  <div class="sec"><i></i>注意事项</div>
+  <div class="cards4">
+    <div class="nc"><h4>贴图自带 · 无需外置</h4><p>生成的模型以 <b>.glb 内嵌贴图</b>导入，颜色 / PBR 贴图随模型打包，存于 Blender 内部，<b>不需要额外贴图文件夹</b>。若需外置，可在「文件 → 外部数据 → 解包文件」导出。</p></div>
+    <div class="nc"><h4>需要 Node.js</h4><p>上传与生成走 LiClick 命令行工具，依赖 <b>Node.js v22+</b>。安装器会自动检测，缺了会引导安装；装好后全自动，无需再管。</p></div>
+    <div class="nc"><h4>统一大小 · 自动排队</h4><p>导入后每个模型<b>缩放到统一大小</b>、落到地面、沿 X 轴一字排开（按「排列间距」推进，单位 mm/cm/m 自动换算）。<b>重名物体自动加 01/02</b> 区分，不冲突。</p></div>
+    <div class="nc"><h4>图片格式 · 重试建议</h4><p>支持 jpg / png / webp / bmp / tif；过小自动放大、过大自动缩小、超 4MB 转 JPEG。网络抖动会自动重试，建议单批不超过 20 组，失败项单独重试效率更高。</p></div>
+  </div>
+
+  <div class="foot"><span>LiClick 批量图生3D — Blender 插件使用说明书</span><span>v2.0</span></div>
+
+</body>
+</html>
