@@ -1,0 +1,4 @@
+{
+  "channel_tool":   { "version": "1.0.0", "url": "https://github.com/foodliao/-/releases/download/tools/channel_tool.exe" },
+  "downgrade_tool": { "version": "1.0.0", "url": "https://github.com/foodliao/-/releases/download/tools/downgrade_tool.exe" }
+}
