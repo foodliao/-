@@ -1,4 +1,5 @@
 {
-  "channel_tool":   { "version": "1.0.0", "url": "https://github.com/foodliao/-/releases/download/tools/channel_tool.exe" },
-  "downgrade_tool": { "version": "1.0.0", "url": "https://github.com/foodliao/-/releases/download/tools/downgrade_tool.exe" }
+  "modeling_toolbox": { "version": "2.0.0", "url": "https://github.com/foodliao/-/releases/download/tools/modeling_toolbox.exe" },
+  "channel_tool":     { "version": "1.0.0", "url": "https://github.com/foodliao/-/releases/download/tools/channel_tool.exe" },
+  "downgrade_tool":   { "version": "1.0.0", "url": "https://github.com/foodliao/-/releases/download/tools/downgrade_tool.exe" }
 }
