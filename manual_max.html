@@ -14,13 +14,24 @@
   .card { cursor:pointer; display:flex; gap:16px; align-items:center;
           background:#232338; border:1px solid #2f2f48; border-radius:12px; padding:20px 22px;
           transition:background .15s,border-color .15s,transform .15s; border-left:5px solid #567aaa; }
-  .card:hover { background:#2b2b44; border-left-color:#ec9840; transform:translateY(-2px); }
+  .card:hover { background:#2b2b44; transform:translateY(-2px); filter:brightness(1.08); }
   .ico { width:52px; height:52px; flex:0 0 52px; border-radius:10px; display:flex;
          align-items:center; justify-content:center; font-weight:800; font-size:27px; }
   .card h2 { color:#fff; font-size:17px; margin-bottom:4px; }
   .card p { color:#b0b0c8; font-size:12.5px; line-height:1.55; }
-  .card .go { color:#ec9840; font-size:12px; font-weight:700; margin-top:7px; }
+  .card .go { font-size:12px; font-weight:700; margin-top:7px; }
   .foot { text-align:center; color:#6b6b85; font-size:12px; margin:34px 0 50px; line-height:1.8; }
+
+  /* 分类分组：大标题（彩色竖条 + 分类色文字 + 数量徽章）+ 该类卡片 */
+  .group { margin-top:30px; }
+  .group:first-of-type { margin-top:20px; }
+  .gtitle { display:flex; align-items:center; gap:12px; font-size:21px; font-weight:800; margin-bottom:14px; }
+  .gtitle .gbar { width:6px; height:24px; border-radius:3px; }
+  .gtitle .gcount { font-size:12px; font-weight:600; color:#8890b0; background:#232338;
+                    border:1px solid #2f2f48; border-radius:20px; padding:3px 12px; }
+  .gtitle.max { color:#f0a860; } .gtitle.max .gbar { background:#ec9840; }
+  .gtitle.bl  { color:#86a8e0; } .gtitle.bl  .gbar { background:#5d86c4; }
+  .gtitle.ot  { color:#79c79a; } .gtitle.ot  .gbar { background:#56a07a; }
   @media (max-width:680px){ .grid{ grid-template-columns:1fr; } }
 
   #reader { display:none; }
@@ -36,46 +47,106 @@
 <body>
   <div id="home">
     <div class="hero">
-      <h1>Max 工具箱 · 使用说明</h1>
-      <p>共 4 个工具，点下面任意一张卡片，查看它的详细图文说明书。</p>
+      <h1>建模工具箱 · 使用说明</h1>
+      <p>按分类查看：Max 工具箱 · Blender 工具箱 · 其他工具。点任意一张卡片，打开它的图文说明书。</p>
     </div>
     <div class="wrap">
-      <div class="tip">▾ 点击卡片打开对应说明书（与工具栏顺序一致：模型整理 · UV辅助 · 批量3d · Max桥接）</div>
-      <div class="grid">
-        <div class="card" style="border-left-color:#a06bd0;" onclick="openTool('tool0','模型批量整理工具')">
-          <div class="ico" style="background:#241d2e;color:#d6a6ff;">整</div>
-          <div>
-            <h2>模型批量整理工具</h2>
-            <p>批量整理 / 检查 / 导出：规范命名、清理、塌陷、检查问题，一键处理一堆模型。</p>
-            <div class="go">查看说明书 →</div>
+      <div class="tip">▾ 点击任意卡片，打开对应工具的图文说明书</div>
+
+      <!-- ════ Max 工具箱（橙） ════ -->
+      <div class="group">
+        <div class="gtitle max"><span class="gbar"></span>Max 工具箱<span class="gcount">5 个工具 · 装进 3ds Max 工具栏</span></div>
+        <div class="grid">
+          <div class="card" style="border-left-color:#ec9840;" onclick="openTool('tool0','模型批量整理工具')">
+            <div class="ico" style="background:#2a2a1a;color:#ec9840;">整</div>
+            <div>
+              <h2>模型批量整理工具</h2>
+              <p>批量整理 / 检查 / 导出：规范命名、清理、塌陷、检查问题，一键处理一堆模型。</p>
+              <div class="go" style="color:#ec9840;">查看说明书 →</div>
+            </div>
           </div>
-        </div>
-        <div class="card" style="border-left-color:#3a8cc0;" onclick="openTool('tool1','UV 辅助工具')">
-          <div class="ico" style="background:#1d2a33;color:#8fd0ff;">UV</div>
-          <div>
-            <h2>UV 辅助工具</h2>
-            <p>UV 精度调整 + 壳对齐 + Rizom UV 桥接，理 UV 更顺手。</p>
-            <div class="go">查看说明书 →</div>
+          <div class="card" style="border-left-color:#ec9840;" onclick="openTool('tool1','UV 辅助工具')">
+            <div class="ico" style="background:#2a2a1a;color:#ec9840;">UV</div>
+            <div>
+              <h2>UV 辅助工具</h2>
+              <p>UV 精度调整 + 壳对齐 + Rizom UV 桥接，理 UV 更顺手。</p>
+              <div class="go" style="color:#ec9840;">查看说明书 →</div>
+            </div>
           </div>
-        </div>
-        <div class="card" style="border-left-color:#ec9840;" onclick="openTool('tool2','批量3d（LiClick 图生3D）')">
-          <div class="ico" style="background:#2a2a1a;color:#ec9840;">批</div>
-          <div>
-            <h2>批量3d（LiClick 图生3D）</h2>
-            <p>选图片 → 自动上传 → AI 批量生成 3D → 自动导入场景并自动上色（通用全 Max 版本）。</p>
-            <div class="go">查看说明书 →</div>
+          <div class="card" style="border-left-color:#ec9840;" onclick="openTool('tool2','批量3d（LiClick 图生3D）')">
+            <div class="ico" style="background:#2a2a1a;color:#ec9840;">批</div>
+            <div>
+              <h2>批量3d（LiClick 图生3D）</h2>
+              <p>选图片 → 自动上传 → AI 批量生成 3D → 自动导入场景并自动上色（通用全 Max 版本）。</p>
+              <div class="go" style="color:#ec9840;">查看说明书 →</div>
+            </div>
           </div>
-        </div>
-        <div class="card" style="border-left-color:#56a07a;" onclick="openTool('tool3','Max 桥接 Maya / Blender')">
-          <div class="ico" style="background:#1c2a22;color:#7fe0a8;">桥</div>
-          <div>
-            <h2>Max 桥接 Maya / Blender</h2>
-            <p>一键把选中模型 / 整个场景，带材质保真发送到 Maya 或 Blender（内嵌贴图 FBX，自动导入）。</p>
-            <div class="go">查看说明书 →</div>
+          <div class="card" style="border-left-color:#ec9840;" onclick="openTool('tool3','Max 桥接 Maya / Blender')">
+            <div class="ico" style="background:#2a2a1a;color:#ec9840;">桥</div>
+            <div>
+              <h2>Max 桥接 Maya / Blender</h2>
+              <p>一键把选中模型 / 整个场景，带材质保真发送到 Maya 或 Blender（内嵌贴图 FBX，自动导入）。</p>
+              <div class="go" style="color:#ec9840;">查看说明书 →</div>
+            </div>
+          </div>
+          <div class="card" style="border-left-color:#ec9840;" onclick="openTool('tool4','面加权法线工具')">
+            <div class="ico" style="background:#2a2a1a;color:#ec9840;">法</div>
+            <div>
+              <h2>面加权法线工具</h2>
+              <p>一键给硬表面模型加权法线（按面积加权），平面更平、棱角更干净。</p>
+              <div class="go" style="color:#ec9840;">查看说明书 →</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="foot">Max 工具箱 · 一键全装　|　整合自 模型整理 · UV辅助 · 批量3d · Max桥接<br>同目录还附带这 4 份说明书的 PDF（可打印 / 离线）。</div>
+
+      <!-- ════ Blender 工具箱（蓝） ════ -->
+      <div class="group">
+        <div class="gtitle bl"><span class="gbar"></span>Blender 工具箱<span class="gcount">2 个工具 · 装进 Blender 插件</span></div>
+        <div class="grid">
+          <div class="card" style="border-left-color:#5d86c4;" onclick="openTool('toolB1','Blender 批量3d（LiClick 图生3D）')">
+            <div class="ico" style="background:#1d2a33;color:#8fd0ff;">批</div>
+            <div>
+              <h2>Blender 批量3d（LiClick 图生3D）</h2>
+              <p>在 Blender 里选图 → AI 批量生成 3D → 自动导入，多视角同名图自动合并为一个物体。</p>
+              <div class="go" style="color:#8fd0ff;">查看说明书 →</div>
+            </div>
+          </div>
+          <div class="card" style="border-left-color:#5d86c4;" onclick="openTool('toolB2','Blender 桥接 Max')">
+            <div class="ico" style="background:#1d2a33;color:#8fd0ff;">桥</div>
+            <div>
+              <h2>Blender 桥接 Max</h2>
+              <p>把 Blender 选中模型 / 整个场景，带材质保真发送到 3ds Max，自动新开并导入。</p>
+              <div class="go" style="color:#8fd0ff;">查看说明书 →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ 其他工具（绿） ════ -->
+      <div class="group">
+        <div class="gtitle ot"><span class="gbar"></span>其他工具<span class="gcount">2 个独立工具 · 装好出现在桌面</span></div>
+        <div class="grid">
+          <div class="card" style="border-left-color:#56a07a;" onclick="openTool('toolO1','通道工具（贴图通道 混合/分离）')">
+            <div class="ico" style="background:#1c2a22;color:#7fe0a8;">通</div>
+            <div>
+              <h2>通道工具（贴图通道 混合/分离）</h2>
+              <p>把多张灰度图打包进一张贴图的 R/G/B/A 通道，或把一张贴图拆分回各通道。</p>
+              <div class="go" style="color:#7fe0a8;">查看说明书 →</div>
+            </div>
+          </div>
+          <div class="card" style="border-left-color:#56a07a;" onclick="openTool('toolO2','Max·Maya·Blender 降版本工具')">
+            <div class="ico" style="background:#1c2a22;color:#7fe0a8;">降</div>
+            <div>
+              <h2>Max · Maya · Blender 降版本工具</h2>
+              <p>把高版本的 Max / Maya / Blender 文件另存为低版本，解决“版本太新打不开”。</p>
+              <div class="go" style="color:#7fe0a8;">查看说明书 →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot">建模工具箱 · 一键全装　|　Max 工具箱 · Blender 工具箱 · 其他工具<br>点开任意卡片查看图文说明；安装方式见各说明书顶部。</div>
     </div>
   </div>
 
@@ -665,6 +736,229 @@
 
 </body>
 </html>
+</script>
+<script type="text/template" id="tool4"><!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><style>
+  :root{ --acc:#ec9840; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ background:#1a1a2e; }
+  body{ width:900px; margin:0 auto; background:#1a1a2e; font-family:"Microsoft YaHei",sans-serif; color:#c8c8e0; padding:24px 40px 32px; }
+  .head{ text-align:center; padding:2px 0 12px; border-bottom:1px solid #2a2c48; }
+  .head h1{ font-size:25px; color:var(--acc); font-weight:800; }
+  .head .en{ font-size:12.5px; color:#8a8aa6; margin-top:5px; }
+  .note{ background:#20243a; border:1px solid #2f3556; border-left:5px solid var(--acc); border-radius:9px; padding:11px 15px; margin:16px 0; font-size:12.5px; color:#aab0c8; line-height:1.65; }
+  .note b{ color:#e6e6f4; }
+  .secbar{ display:flex; align-items:center; border-radius:8px; padding:8px 14px; color:#fff; font-weight:800; font-size:15px; margin:18px 0 8px; background:var(--acc); }
+  .item{ padding:9px 4px 9px 14px; border-bottom:1px solid #262a40; }
+  .item:last-child{ border-bottom:none; }
+  .item .nm{ font-size:13.5px; font-weight:700; color:#e6e6f4; }
+  .item .ds{ font-size:12.5px; color:#aab0c8; line-height:1.6; margin-top:3px; } .item .ds b{ color:#e6e6f4; }
+  .flow{ display:flex; align-items:stretch; gap:6px; margin:8px 0; }
+  .flow .stp{ flex:1; background:#20243a; border:1px solid #2f3556; border-radius:8px; padding:9px 8px; text-align:center; }
+  .flow .stp .num{ width:24px; height:24px; border-radius:50%; background:var(--acc); color:#fff; font-size:12px; font-weight:700; line-height:24px; margin:0 auto 6px; }
+  .flow .stp b{ font-size:12px; color:#e6e6f4; } .flow .stp p{ font-size:11px; color:#8a90b0; margin-top:3px; line-height:1.4; }
+  .flow .arr{ align-self:center; color:#4a4d70; font-weight:900; }
+  .tips{ background:#20243a; border:1px solid #2f3556; border-radius:9px; padding:12px 16px; margin-top:16px; }
+  .tips h3{ color:var(--acc); font-size:13.5px; font-weight:800; margin-bottom:6px; }
+  .tips p{ font-size:12.5px; color:#aab0c8; line-height:1.7; } .tips .n{ color:var(--acc); font-weight:700; margin-right:5px; }
+  .foot{ display:flex; justify-content:space-between; color:#6a6a86; font-size:11.5px; margin-top:20px; padding-top:10px; border-top:1px solid #262a40; }
+</style></head><body>
+  <div class="head"><h1>面加权法线工具</h1><div class="en">Face Weighted Normals · 硬表面棱角清理</div></div>
+  <div class="note"><b>安装：</b>已随「建模工具箱」装进 3ds Max 顶部「我的工具」工具栏；也可把工具的 .ms 拖进视口一次即装。<b>用法：选中模型 → 点工具按钮</b>，一键完成。</div>
+  <div class="secbar">这个工具解决什么</div>
+  <div class="item"><div class="nm">什么是「加权法线」</div><div class="ds">按相邻面的<b>面积（和角度）加权</b>来计算顶点法线，让<b>大平面保持平整</b>、不被旁边的小倒角面把光影「带歪」，硬表面看起来更干净、更高级。</div></div>
+  <div class="item"><div class="nm">适用对象</div><div class="ds">道具、机械、建筑、武器等<b>硬表面模型</b>，尤其是边缘做了<b>小倒角 / 卡边</b>的物体——加权后平面不再出现脏脏的渐变。</div></div>
+  <div class="secbar">使用流程</div>
+  <div class="flow">
+    <div class="stp"><div class="num">1</div><b>选中模型</b><p>可一次选多个批量处理</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">2</div><b>点工具按钮</b><p>一键计算加权法线</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">3</div><b>即时生效</b><p>视口里棱角立刻变干净</p></div>
+  </div>
+  <div class="tips"><h3>提示</h3>
+    <p><span class="n">①</span>建议先给硬边做好<b>小倒角 / 卡边</b>再加权，效果最佳。</p>
+    <p><span class="n">②</span>支持<b>多选批量</b>处理；操作可 <b>Ctrl+Z</b> 撤销。</p>
+  </div>
+  <div class="foot"><span>面加权法线工具 · 建模工具箱</span><span>Max 工具箱</span></div>
+</body></html>
+</script>
+<script type="text/template" id="toolB1"><!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><style>
+  :root{ --acc:#6fa0e0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ background:#1a1a2e; }
+  body{ width:900px; margin:0 auto; background:#1a1a2e; font-family:"Microsoft YaHei",sans-serif; color:#c8c8e0; padding:24px 40px 32px; }
+  .head{ text-align:center; padding:2px 0 12px; border-bottom:1px solid #2a2c48; }
+  .head h1{ font-size:25px; color:var(--acc); font-weight:800; }
+  .head .en{ font-size:12.5px; color:#8a8aa6; margin-top:5px; }
+  .note{ background:#20243a; border:1px solid #2f3556; border-left:5px solid var(--acc); border-radius:9px; padding:11px 15px; margin:16px 0; font-size:12.5px; color:#aab0c8; line-height:1.65; }
+  .note b{ color:#e6e6f4; }
+  .secbar{ display:flex; align-items:center; border-radius:8px; padding:8px 14px; color:#fff; font-weight:800; font-size:15px; margin:18px 0 8px; background:var(--acc); }
+  .item{ padding:9px 4px 9px 14px; border-bottom:1px solid #262a40; }
+  .item:last-child{ border-bottom:none; }
+  .item .nm{ font-size:13.5px; font-weight:700; color:#e6e6f4; }
+  .item .ds{ font-size:12.5px; color:#aab0c8; line-height:1.6; margin-top:3px; } .item .ds b{ color:#e6e6f4; }
+  .flow{ display:flex; align-items:stretch; gap:6px; margin:8px 0; flex-wrap:wrap; }
+  .flow .stp{ flex:1; min-width:120px; background:#20243a; border:1px solid #2f3556; border-radius:8px; padding:9px 8px; text-align:center; }
+  .flow .stp .num{ width:24px; height:24px; border-radius:50%; background:var(--acc); color:#fff; font-size:12px; font-weight:700; line-height:24px; margin:0 auto 6px; }
+  .flow .stp b{ font-size:12px; color:#e6e6f4; } .flow .stp p{ font-size:11px; color:#8a90b0; margin-top:3px; line-height:1.4; }
+  .flow .arr{ align-self:center; color:#4a4d70; font-weight:900; }
+  .tips{ background:#20243a; border:1px solid #2f3556; border-radius:9px; padding:12px 16px; margin-top:16px; }
+  .tips h3{ color:var(--acc); font-size:13.5px; font-weight:800; margin-bottom:6px; }
+  .tips p{ font-size:12.5px; color:#aab0c8; line-height:1.7; } .tips .n{ color:var(--acc); font-weight:700; margin-right:5px; }
+  .foot{ display:flex; justify-content:space-between; color:#6a6a86; font-size:11.5px; margin-top:20px; padding-top:10px; border-top:1px solid #262a40; }
+</style></head><body>
+  <div class="head"><h1>Blender 批量3d（LiClick 图生3D）</h1><div class="en">Blender 插件 · 选图 → AI 批量生成 3D → 自动导入</div></div>
+  <div class="note"><b>安装：</b>已随「建模工具箱」装进 Blender；去 <b>编辑 → 偏好设置 → 插件</b> 搜索工具名勾选启用，面板在 <b>N 键侧栏</b>。首次生成需要 Node.js，未装会自动提示。</div>
+  <div class="secbar">使用流程</div>
+  <div class="flow">
+    <div class="stp"><div class="num">1</div><b>选图片</b><p>多选；同名前缀的多视角图自动归为一个物体</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">2</div><b>选模型 + 配置</b><p>选 AI 模型，参数随模型变</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">3</div><b>勾选要生成的组</b></div><div class="arr">→</div>
+    <div class="stp"><div class="num">4</div><b>生成 + 自动导入</b><p>实时进度，完成自动导入 Blender</p></div>
+  </div>
+  <div class="secbar">功能要点</div>
+  <div class="item"><div class="nm">多视角合并</div><div class="ds">同名前缀 + <b>_前/_后/_左/_右</b>（或 <b>_1/_2/_3/_4</b>）的图自动合并为同一个 3D 物体；无后缀的各自独立。</div></div>
+  <div class="item"><div class="nm">界面随模型切换 · 实时进度</div><div class="ds">不同 AI 模型显示各自支持的参数；每组实时显示 上传 / 生成 / 下载 / 导入 状态，网络抖动<b>自动重试</b>。</div></div>
+  <div class="item"><div class="nm">自动导入 + 自动更新</div><div class="ds">生成完自动导入并统一大小、排开摆放；插件<b>自带自动更新</b>，作者更新后无需重装。</div></div>
+  <div class="tips"><h3>提示</h3>
+    <p><span class="n">①</span>支持 jpg / png / webp；建议单批不超过 20 组。</p>
+    <p><span class="n">②</span>与 Max 版「批量3d」同一套 AI 能力，只是在 Blender 里操作。</p>
+  </div>
+  <div class="foot"><span>Blender 批量3d · 建模工具箱</span><span>Blender 工具箱</span></div>
+</body></html>
+</script>
+<script type="text/template" id="toolB2"><!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><style>
+  :root{ --acc:#6fa0e0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ background:#1a1a2e; }
+  body{ width:900px; margin:0 auto; background:#1a1a2e; font-family:"Microsoft YaHei",sans-serif; color:#c8c8e0; padding:24px 40px 32px; }
+  .head{ text-align:center; padding:2px 0 12px; border-bottom:1px solid #2a2c48; }
+  .head h1{ font-size:25px; color:var(--acc); font-weight:800; }
+  .head .en{ font-size:12.5px; color:#8a8aa6; margin-top:5px; }
+  .note{ background:#20243a; border:1px solid #2f3556; border-left:5px solid var(--acc); border-radius:9px; padding:11px 15px; margin:16px 0; font-size:12.5px; color:#aab0c8; line-height:1.65; }
+  .note b{ color:#e6e6f4; }
+  .secbar{ display:flex; align-items:center; border-radius:8px; padding:8px 14px; color:#fff; font-weight:800; font-size:15px; margin:18px 0 8px; background:var(--acc); }
+  .item{ padding:9px 4px 9px 14px; border-bottom:1px solid #262a40; }
+  .item:last-child{ border-bottom:none; }
+  .item .nm{ font-size:13.5px; font-weight:700; color:#e6e6f4; }
+  .item .ds{ font-size:12.5px; color:#aab0c8; line-height:1.6; margin-top:3px; } .item .ds b{ color:#e6e6f4; }
+  .flow{ display:flex; align-items:stretch; gap:6px; margin:8px 0; }
+  .flow .stp{ flex:1; background:#20243a; border:1px solid #2f3556; border-radius:8px; padding:9px 8px; text-align:center; }
+  .flow .stp .num{ width:24px; height:24px; border-radius:50%; background:var(--acc); color:#fff; font-size:12px; font-weight:700; line-height:24px; margin:0 auto 6px; }
+  .flow .stp b{ font-size:12px; color:#e6e6f4; } .flow .stp p{ font-size:11px; color:#8a90b0; margin-top:3px; line-height:1.4; }
+  .flow .arr{ align-self:center; color:#4a4d70; font-weight:900; }
+  .tips{ background:#20243a; border:1px solid #2f3556; border-radius:9px; padding:12px 16px; margin-top:16px; }
+  .tips h3{ color:var(--acc); font-size:13.5px; font-weight:800; margin-bottom:6px; }
+  .tips p{ font-size:12.5px; color:#aab0c8; line-height:1.7; } .tips .n{ color:var(--acc); font-weight:700; margin-right:5px; }
+  .foot{ display:flex; justify-content:space-between; color:#6a6a86; font-size:11.5px; margin-top:20px; padding-top:10px; border-top:1px solid #262a40; }
+</style></head><body>
+  <div class="head"><h1>Blender 桥接 Max</h1><div class="en">把 Blender 模型 / 场景带材质保真发送到 3ds Max</div></div>
+  <div class="note"><b>安装：</b>已随「建模工具箱」装进 Blender；去 <b>编辑 → 偏好设置 → 插件</b> 搜索工具名勾选启用，面板在 <b>N 键侧栏</b>。</div>
+  <div class="secbar">使用流程</div>
+  <div class="flow">
+    <div class="stp"><div class="num">1</div><b>选范围</b><p>仅选中物体 / 整个场景</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">2</div><b>选项</b><p>嵌入材质贴图等</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">3</div><b>点「发送到 Max」</b></div><div class="arr">→</div>
+    <div class="stp"><div class="num">4</div><b>Max 自动新开并导入</b></div>
+  </div>
+  <div class="secbar">功能要点</div>
+  <div class="item"><div class="nm">保真发送</div><div class="ds">模型 + <b>材质 / 贴图</b>随 FBX 一起过去；位置、比例 1:1 原样保留。</div></div>
+  <div class="item"><div class="nm">自动新开 Max 导入</div><div class="ds">每次发送都新开一个干净的 3ds Max 窗口并自动导入，免手动操作。</div></div>
+  <div class="item"><div class="nm">单位 / 朝向自动处理</div><div class="ds">自动处理 Blender（Z-up）与 Max 之间的单位和朝向，导入后比例、方向正确。</div></div>
+  <div class="tips"><h3>提示</h3>
+    <p><span class="n">①</span>没自动识别到的 Max 版本，可在面板里<b>手动指定 3dsmax.exe</b>，会被记忆。</p>
+  </div>
+  <div class="foot"><span>Blender 桥接 Max · 建模工具箱</span><span>Blender 工具箱</span></div>
+</body></html>
+</script>
+<script type="text/template" id="toolO1"><!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><style>
+  :root{ --acc:#5fb487; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ background:#1a1a2e; }
+  body{ width:900px; margin:0 auto; background:#1a1a2e; font-family:"Microsoft YaHei",sans-serif; color:#c8c8e0; padding:24px 40px 32px; }
+  .head{ text-align:center; padding:2px 0 12px; border-bottom:1px solid #2a2c48; }
+  .head h1{ font-size:25px; color:var(--acc); font-weight:800; }
+  .head .en{ font-size:12.5px; color:#8a8aa6; margin-top:5px; }
+  .note{ background:#20243a; border:1px solid #2f3556; border-left:5px solid var(--acc); border-radius:9px; padding:11px 15px; margin:16px 0; font-size:12.5px; color:#aab0c8; line-height:1.65; }
+  .note b{ color:#e6e6f4; }
+  .secbar{ display:flex; align-items:center; border-radius:8px; padding:8px 14px; color:#fff; font-weight:800; font-size:15px; margin:18px 0 8px; background:var(--acc); }
+  .item{ padding:9px 4px 9px 14px; border-bottom:1px solid #262a40; }
+  .item:last-child{ border-bottom:none; }
+  .item .nm{ font-size:13.5px; font-weight:700; color:#e6e6f4; }
+  .item .ds{ font-size:12.5px; color:#aab0c8; line-height:1.6; margin-top:3px; } .item .ds b{ color:#e6e6f4; }
+  .flow{ display:flex; align-items:stretch; gap:6px; margin:8px 0; }
+  .flow .stp{ flex:1; background:#20243a; border:1px solid #2f3556; border-radius:8px; padding:9px 8px; text-align:center; }
+  .flow .stp .num{ width:24px; height:24px; border-radius:50%; background:var(--acc); color:#fff; font-size:12px; font-weight:700; line-height:24px; margin:0 auto 6px; }
+  .flow .stp b{ font-size:12px; color:#e6e6f4; } .flow .stp p{ font-size:11px; color:#8a90b0; margin-top:3px; line-height:1.4; }
+  .flow .arr{ align-self:center; color:#4a4d70; font-weight:900; }
+  .tips{ background:#20243a; border:1px solid #2f3556; border-radius:9px; padding:12px 16px; margin-top:16px; }
+  .tips h3{ color:var(--acc); font-size:13.5px; font-weight:800; margin-bottom:6px; }
+  .tips p{ font-size:12.5px; color:#aab0c8; line-height:1.7; } .tips .n{ color:var(--acc); font-weight:700; margin-right:5px; }
+  .foot{ display:flex; justify-content:space-between; color:#6a6a86; font-size:11.5px; margin-top:20px; padding-top:10px; border-top:1px solid #262a40; }
+</style></head><body>
+  <div class="head"><h1>通道工具（贴图通道 混合 / 分离）</h1><div class="en">贴图通道打包 / 拆分 · 独立小工具（双击即用）</div></div>
+  <div class="note"><b>安装：</b>在「建模工具箱」里勾选安装后，会自动下载到本机并<b>在桌面生成快捷方式</b>，双击即用；独立运行，<b>不依赖 Max / Blender</b>。</div>
+  <div class="secbar">两个功能</div>
+  <div class="item"><div class="nm">混合（打包）</div><div class="ds">把多张灰度图分别放进同一张贴图的 <b>R / G / B / A</b> 通道——例如把 <b>粗糙度 / 金属度 / AO / 高度</b> 打包成一张 mask 贴图，给引擎省纹理采样。</div></div>
+  <div class="item"><div class="nm">分离（拆分）</div><div class="ds">把一张已打包的贴图<b>拆回各个通道</b>，每个通道单独导出成一张图，方便修改后再打包。</div></div>
+  <div class="secbar">使用流程</div>
+  <div class="flow">
+    <div class="stp"><div class="num">1</div><b>打开工具</b><p>桌面双击快捷方式</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">2</div><b>选图</b><p>打包：各通道选图；拆分：选要拆的图</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">3</div><b>设置输出</b></div><div class="arr">→</div>
+    <div class="stp"><div class="num">4</div><b>导出</b></div>
+  </div>
+  <div class="tips"><h3>提示</h3>
+    <p><span class="n">①</span>通道贴图常用于游戏引擎（Unity URP/HDRP、Unreal 的 mask / ORM 贴图）。</p>
+  </div>
+  <div class="foot"><span>通道工具 · 建模工具箱</span><span>其他工具</span></div>
+</body></html>
+</script>
+<script type="text/template" id="toolO2"><!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><style>
+  :root{ --acc:#5fb487; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ background:#1a1a2e; }
+  body{ width:900px; margin:0 auto; background:#1a1a2e; font-family:"Microsoft YaHei",sans-serif; color:#c8c8e0; padding:24px 40px 32px; }
+  .head{ text-align:center; padding:2px 0 12px; border-bottom:1px solid #2a2c48; }
+  .head h1{ font-size:25px; color:var(--acc); font-weight:800; }
+  .head .en{ font-size:12.5px; color:#8a8aa6; margin-top:5px; }
+  .note{ background:#20243a; border:1px solid #2f3556; border-left:5px solid var(--acc); border-radius:9px; padding:11px 15px; margin:16px 0; font-size:12.5px; color:#aab0c8; line-height:1.65; }
+  .note b{ color:#e6e6f4; }
+  .secbar{ display:flex; align-items:center; border-radius:8px; padding:8px 14px; color:#fff; font-weight:800; font-size:15px; margin:18px 0 8px; background:var(--acc); }
+  .item{ padding:9px 4px 9px 14px; border-bottom:1px solid #262a40; }
+  .item:last-child{ border-bottom:none; }
+  .item .nm{ font-size:13.5px; font-weight:700; color:#e6e6f4; }
+  .item .ds{ font-size:12.5px; color:#aab0c8; line-height:1.6; margin-top:3px; } .item .ds b{ color:#e6e6f4; }
+  .flow{ display:flex; align-items:stretch; gap:6px; margin:8px 0; }
+  .flow .stp{ flex:1; background:#20243a; border:1px solid #2f3556; border-radius:8px; padding:9px 8px; text-align:center; }
+  .flow .stp .num{ width:24px; height:24px; border-radius:50%; background:var(--acc); color:#fff; font-size:12px; font-weight:700; line-height:24px; margin:0 auto 6px; }
+  .flow .stp b{ font-size:12px; color:#e6e6f4; } .flow .stp p{ font-size:11px; color:#8a90b0; margin-top:3px; line-height:1.4; }
+  .flow .arr{ align-self:center; color:#4a4d70; font-weight:900; }
+  .tips{ background:#20243a; border:1px solid #2f3556; border-radius:9px; padding:12px 16px; margin-top:16px; }
+  .tips h3{ color:var(--acc); font-size:13.5px; font-weight:800; margin-bottom:6px; }
+  .tips p{ font-size:12.5px; color:#aab0c8; line-height:1.7; } .tips .n{ color:var(--acc); font-weight:700; margin-right:5px; }
+  .foot{ display:flex; justify-content:space-between; color:#6a6a86; font-size:11.5px; margin-top:20px; padding-top:10px; border-top:1px solid #262a40; }
+</style></head><body>
+  <div class="head"><h1>Max · Maya · Blender 降版本工具</h1><div class="en">把文件另存为低版本 · 独立小工具（双击即用）</div></div>
+  <div class="note"><b>安装：</b>在「建模工具箱」里勾选安装后，会自动下载到本机并<b>在桌面生成快捷方式</b>，双击即用。</div>
+  <div class="secbar">解决什么问题</div>
+  <div class="item"><div class="nm">「文件版本太新打不开」</div><div class="ds">高版本软件保存的 <b>.max / .ma / .mb / .blend</b>，低版本软件会打不开。本工具把它另存成你指定的<b>低版本</b>，方便发给用低版本的同事 / 外包。</div></div>
+  <div class="secbar">使用流程</div>
+  <div class="flow">
+    <div class="stp"><div class="num">1</div><b>打开工具</b><p>桌面双击快捷方式</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">2</div><b>选文件</b><p>拖入或选择，可批量多选</p></div><div class="arr">→</div>
+    <div class="stp"><div class="num">3</div><b>选目标版本</b></div><div class="arr">→</div>
+    <div class="stp"><div class="num">4</div><b>开始转换</b><p>输出低版本文件</p></div>
+  </div>
+  <div class="tips"><h3>提示</h3>
+    <p><span class="n">①</span>转换靠调用本机对应软件完成，<b>需本机装有对应的 Max / Maya / Blender</b>。</p>
+    <p><span class="n">②</span>支持<b>批量</b>：一次多选多个文件排队转换。</p>
+  </div>
+  <div class="foot"><span>降版本工具 · 建模工具箱</span><span>其他工具</span></div>
+</body></html>
 </script>
   <script>
     var view=document.getElementById('view');
